@@ -12,7 +12,7 @@ is a form for student to make registration
 - Bootstrap 
 
 ## Screenshot
-![screenshot](ss123.png)
+![screenshot](ss111.png)
 
 
 ## Installation
