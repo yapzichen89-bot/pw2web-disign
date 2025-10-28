@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center">BLOOM COLLEGE</h2>
+        <h4 class="text-center mb-4">Student Registration Form</h4>
+
+       <!-- Student image -->
+      <div class="mb-3">
+  <label class="form-label d-block">Student Image:</label>
+
+  <!-- squre upload box -->
+  <div id="uploadBox"
+       style="width:150px; height:150px; border:2px dashed #ccc; border-radius:10px; position:relative; overflow:hidden; cursor:pointer; background:#f9f9f9;"
+       onmouseover="showHoverText()"
+       onmouseout="hideHoverText()"
+       onclick="document.getElementById('fileInput').click()">
+       
+    <!-- preview image -->
+    <img id="previewImage" src="https://via.placeholder.com/150?text=No+Image"
+         alt="Preview"
+         style="width:100%; height:100%; object-fit:cover;">
+
+    <!-- Hover text -->
+    <div id="hoverText"
+         style="position:absolute; top:0; left:0; width:100%; height:100%;
+                display:flex; align-items:center; justify-content:center;
+                background:rgba(0,0,0,0.5); color:white; font-weight:bold;
+                opacity:0; transition:opacity 0.3s;">
+      Upload Image
+    </div>
+  </div>
+
+  <!-- upload button(hidden) -->
+  <input type="file" id="fileInput" accept="image/*"
+         style="display:none;" onchange="previewFile(event)">
+  
+  <small class="text-muted">(less than 5 MB)</small>
+</div>
+
+            <!-- Names -->
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="form-label">Student Name:</label>
+                    <input type="text" class="form-control" id="studentName" placeholder="For Intro">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Father's Name:</label>
+                    <input type="text" class="form-control" id="fatherName" placeholder="Enter Full Name">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Mother's Name:</label>
+                    <input type="text" class="form-control" id="motherName" placeholder="Enter Full Name">
+                </div>
+            </div>
+
+            <!-- Personal Info -->
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label class="form-label">Gender:</label>
+                    <select class="form-select" id="gender">
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Date of Birth:</label>
+                    <input type="date" class="form-control" id="dob">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">E-mail:</label>
+                    <input type="email" class="form-control" id="email" placeholder="email@example.com">
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Level:</label>
+                    <select class="form-select" id="level">
+                        <option value="">Select Level</option>
+                        <option value="foundation">Foundation</option>
+                        <option value="diploma">Diploma</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Department:</label>
+                    <select class="form-select" id="department">
+                        <option value="">Select Department</option>
+                        <option value="computer">Teknologi Maklumat Dan Komunikasi</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="mb-3">
+                <label class="form-label">Tel/Mobile:</label>
+                <input type="tel" class="form-control" id="phone" placeholder="+60 XXX XXXX">
+            </div>
+
+            <!-- Address -->
+            <div class="mb-3">
+                <label class="form-label">Address:</label>
+                <textarea class="form-control" id="address" rows="2"></textarea>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="form-label">State:</label>
+                    <select class="form-select" id="state">
+                        <option value="">Select State</option>
+                        <option value="sarawak">Sarawak</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">City:</label>
+                    <input type="text" class="form-control" id="city" placeholder="City">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Postcode:</label>
+                    <input type="text" class="form-control" id="postcode" placeholder="00000">
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary w-100">Register</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="reset" class="btn btn-secondary w-100">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="successModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center p-4">
+                    <h5 class="text-success">Success!</h5>
+                    <p>Your details have been saved!</p>
+                    <button class="btn btn-success" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+<!-- JS：preview function -->
+<script>
+function previewFile(event) {
+  const image = document.getElementById('previewImage');
+  const file = event.target.files[0];
+  if (file) {
+    image.src = URL.createObjectURL(file); // display preview image
+  } else {
+    image.src = "https://via.placeholder.com/150?text=No+Image"; // 
+  }
+}
+</script>
+
+<script>
+function showHoverText() {
+  document.getElementById('hoverText').style.opacity = 1;
+}
+
+function hideHoverText() {
+  document.getElementById('hoverText').style.opacity = 0;
+}
+
+function previewFile(event) {
+  const image = document.getElementById('previewImage');
+  const file = event.target.files[0];
+  if (file) {
+    image.src = URL.createObjectURL(file); // display preview image
+  } else {
+    image.src = "https://via.placeholder.com/150?text=No+Image";
+  }
+}
+</script>
+
+</body>
+</html>
