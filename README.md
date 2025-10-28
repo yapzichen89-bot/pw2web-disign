@@ -20,7 +20,7 @@ creating a web site using Visual Code
 1. Clone this repository
 2. Open in VS Code
 3. Run using Live Server
-
+ 
 ## Contributors
 - Name: YAP ZI CHEN
 - Course: WEB DISIGN
