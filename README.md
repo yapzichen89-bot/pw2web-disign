@@ -1,12 +1,11 @@
 # YAP-ZI-CHEN
-its about my self,and project that i have done
+its about the Student Registration Form 
 
 ## Overview
 creating a web site using Visual Code
 
 ## Features
-- *Responsive Navigation Bar* – Includes dropdown menu, search bar, login button.
-- *Image Carousel* – Displays rotating images using Bootstrap carousel.
+is a form for student to make registration
 
 ## Technologies Used
 - HTML, CSS, JS
