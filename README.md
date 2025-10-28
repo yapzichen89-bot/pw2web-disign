@@ -13,7 +13,7 @@ creating a web site using Visual Code
 - Bootstrap 
 
 ## Screenshot
-![screenshot](images/ss123.png)
+![screenshot](ss123.png)
 
 
 ## Installation
